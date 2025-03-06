@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "praveen kumar savaram",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -28.8, "left": 91.24, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -13.2,
+      "left": 224.6,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 65.9, "left": -38.6, "attrs": {} },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": 213.8,
+      "left": -45.4,
+      "attrs": { "type": "5kg" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": 211.2,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v19.2", "h56.8", "v-153.6" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v9.6", "h86.4", "v-19.2" ] ],
+    [ "pot1:SIG", "esp:34", "green", [ "v48", "h76.4", "v0" ] ],
+    [ "cell1:DT", "esp:16", "green", [ "h-19.2", "v-48.5", "h278.4", "v-96" ] ],
+    [ "cell1:SCK", "esp:4", "green", [ "h-28.8", "v-68", "h278.4", "v-76.8" ] ],
+    [ "cell1:GND", "esp:GND.1", "black", [ "h-9.6", "v-29.1", "h134.4", "v-86.4", "h9.6" ] ],
+    [ "cell1:VCC", "esp:3V3", "red", [ "h-38.4", "v-240", "h134.4", "v-28.8", "h-9.6" ] ],
+    [ "esp:GND.3", "led1:A", "black", [ "h57.6", "v-28.8" ] ],
+    [ "esp:17", "r1:1", "green", [ "h19.2", "v-19.2" ] ],
+    [ "r1:2", "led1:C", "green", [ "v-28.8", "h-30" ] ]
+  ],
+  "dependencies": {}
+}
